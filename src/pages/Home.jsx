@@ -4,6 +4,7 @@ import '../styles/Home.css'
 import { Grid } from '@mui/material'
 import Carousel from '../components/Carousel'
 import Upnext from '../components/Upnext'
+import MovieList from '../components/MovieList'
 const Home = () => {
   return (
     <Base>
@@ -20,6 +21,10 @@ const Home = () => {
 <Upnext />
         </Grid>
     </Grid>
+
+    <div>
+      <MovieList />
+    </div>
 
 
     </div>

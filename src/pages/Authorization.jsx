@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../styles/Authorization.css";
 import { TextField } from "@mui/material";
 import { loginToggle, SignupToggle } from "../redux/auth";
+import { useNavigate } from "react-router-dom";
 
 
 const theme = createTheme({
@@ -20,6 +21,7 @@ const theme = createTheme({
 
 const Auth = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const currentauthState = useSelector((state)=>state.auth)
   // console.log(currentauthState);
 
@@ -104,7 +106,8 @@ const AddUser = async (event) => {
         email,
         password,
       };
-      const response = await fetch("https://imdb-server-7smr.onrender.com/auth/login", {
+      // const response = await fetch("https://imdb-server-7smr.onrender.com/auth/login", {
+      const response = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
         body: JSON.stringify(newData),
 
@@ -125,7 +128,7 @@ const AddUser = async (event) => {
         email: "",
         password: "",
       });
-        alert(data.message);
+        navigate('/home')
       
     } catch (error) {
       // console.log(error);
