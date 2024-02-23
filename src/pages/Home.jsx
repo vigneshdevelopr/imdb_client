@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <Base>
     <div className="Home_main">
-    <Grid style={{ padding:'5% 10%'}} container spacing={6}>
+    <Grid style={{ padding:'5% 5%'}} container spacing={6}>
 
     <Grid  item xs={12} sm={6} md={6}>
 

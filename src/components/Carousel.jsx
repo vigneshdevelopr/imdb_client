@@ -9,8 +9,11 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { useDispatch, useSelector } from 'react-redux';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
+
 
 const images = [
   {
@@ -36,31 +39,29 @@ const images = [
 ];
 
 function Carousel() {
+  const image_url = 'https://image.tmdb.org/t/p/original'
+
+
+
+  const dispatch = useDispatch();
+  const movies = useSelector(state => state.movies.movies);
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  
 
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
 
   return (
-    <Box sx={{ flexGrow: 1 , maxWidth:600}}>
+    <Box sx={{ flexGrow: 1 , maxWidth:500, display:'flex', margin:'0 auto'}}>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {images.map((step, index) => (
+        {movies.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
@@ -69,9 +70,9 @@ function Carousel() {
                   height: 455,
                   display: 'block',
                   overflow: 'hidden',
-                  width: '100%',
+                  width: '80%',
                 }}
-                src={step.imgPath}
+                src={`${image_url}${step.poster_path}`}
                 alt={step.label}
               />
             ) : null}
