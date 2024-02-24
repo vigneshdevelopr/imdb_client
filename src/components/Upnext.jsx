@@ -34,9 +34,12 @@ const Upnext = () => {
     // backgroundColor: theme.palette.background.paper,
   }));
 
+
   return (
+    <>
+    <h3 className='upnext_title'>UP NEXT</h3>
+
     <div className='upnext_main'>
-      <h3 className='upnext_title'>UP NEXT</h3>
       <Demo className='list'>
         <div className="scroll_wrapper">
           <List dense={dense}>
@@ -64,6 +67,7 @@ const Upnext = () => {
         </div>
       </Demo>
     </div>
+    </>
   );
 };
 
